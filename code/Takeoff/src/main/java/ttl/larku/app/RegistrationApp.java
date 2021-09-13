@@ -11,16 +11,20 @@ public class RegistrationApp {
 
     int value;
 
+    StudentService ss = new StudentService();
     public static void main(String[] args) {
         RegistrationApp ra = new RegistrationApp();
         //ra.primeAndPrintBoth();
         ra.postRequestToAddAStudent();
+
+        //Some time later
         ra.getRequestForAllStudents();
     }
 
 
     public void postRequestToAddAStudent() {
-        StudentService ss = new StudentService();
+        System.out.println("Post Student");
+        //StudentService ss = new StudentService();
         ss.createStudent("New One", "282 484 9944", Student.Status.FULL_TIME);
 
         List<Student> students = ss.getAllStudents();
@@ -28,7 +32,8 @@ public class RegistrationApp {
     }
 
     public void getRequestForAllStudents() {
-        StudentService ss = new StudentService();
+        System.out.println("Get request");
+
         List<Student> students = ss.getAllStudents();
         System.out.println("All Students: " + students.size());
         students.forEach(System.out::println);
