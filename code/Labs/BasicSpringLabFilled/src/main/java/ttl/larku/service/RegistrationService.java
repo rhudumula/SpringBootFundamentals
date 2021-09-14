@@ -1,30 +1,62 @@
 package ttl.larku.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ttl.larku.domain.ScheduledClass;
 import ttl.larku.domain.Student;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 //TODO - Need to make this into a bean
+//@Component
 @Service
 public class RegistrationService {
 
     //TODO - something required here
-    @Autowired
+//    @Autowired
     private CourseService courseService;
-    @Autowired
+//    @Autowired
     private StudentService studentService;
-    @Autowired
+//    @Autowired
     private ClassService classService;
 
-    public RegistrationService() {
-        courseService = new CourseService();
-        studentService = new StudentService();
-        classService = new ClassService();
+    @Autowired
+    public RegistrationService(CourseService courseService, StudentService studentService, ClassService classService) {
+        this.courseService = courseService;
+        this.studentService = studentService;
+        this.classService = classService;
+
+        int studentCount = studentService.getAllStudents().size();
+        System.out.println("studentCount: " + studentCount);
     }
+
+    public RegistrationService(CourseService courseService, StudentService studentService) {
+        this.courseService = courseService;
+        this.studentService = studentService;
+
+        int studentCount = studentService.getAllStudents().size();
+        System.out.println("studentCount: " + studentCount);
+    }
+
+
+
+//    @PostConstruct
+//    public void init() {
+//        int studentCount = studentService.getAllStudents().size();
+//        System.out.println("studentCount: " + studentCount);
+//    }
+//
+//    @PostConstruct
+//    public void init2() {
+//        int studentCount = studentService.getAllStudents().size();
+//        System.out.println("st2: " + studentCount);
+//    }
 
 
     public ScheduledClass addNewClassToSchedule(String courseCode, String startDate, String endDate) {
@@ -76,9 +108,9 @@ public class RegistrationService {
     }
 
 
-    public void setCourseService(CourseService courseService) {
-        this.courseService = courseService;
-    }
+//    public void setCourseService(CourseService courseService) {
+//        this.courseService = courseService;
+//    }
 
 
     public StudentService getStudentService() {
@@ -86,9 +118,9 @@ public class RegistrationService {
     }
 
 
-    public void setStudentService(StudentService studentService) {
-        this.studentService = studentService;
-    }
+//    public void setStudentService(StudentService studentService) {
+//        this.studentService = studentService;
+//    }
 
 
     public ClassService getClassService() {
@@ -96,7 +128,7 @@ public class RegistrationService {
     }
 
 
-    public void setClassService(ClassService classService) {
-        this.classService = classService;
-    }
+//    public void setClassService(ClassService classService) {
+//        this.classService = classService;
+//    }
 }
