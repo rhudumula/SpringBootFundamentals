@@ -54,11 +54,30 @@ public class RestClientSpringTest {
     }
 
     @Test
+    public void getStudentWithIdAsJson() throws IOException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+
+
+        ResponseEntity<String> response = rt.exchange("/adminrest/student/{id}",
+                HttpMethod.GET, entity, String.class, 1);
+
+        assertEquals(200, response.getStatusCodeValue());
+
+        String rr = response.getBody();
+
+        System.out.println("Body is " + rr);
+    }
+
+    @Test
     public void testGetOneStudentUsingAutoUnmarshalling() throws IOException {
         Student s = getStudentWithId(2);
         assertTrue(s.getName().contains("Ana"));
 //        return s;
     }
+
 
     public Student getStudentWithId(int id) throws IOException {
         //This is the Spring REST mechanism to create a paramterized type

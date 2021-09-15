@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -42,8 +43,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class StudentRestControllerMvcTest {
 
-    @Autowired
-    private StudentService studentService;
+//    @Autowired
+//    private StudentService studentService;
 
     private LarkUTestDataConfig testData = new LarkUTestDataConfig();
 
@@ -69,6 +70,7 @@ public class StudentRestControllerMvcTest {
     }
 
     @Test
+    @Order(1)
     public void testGetOneStudentGoodJson() throws Exception {
         MediaType accept = MediaType.APPLICATION_JSON;
         MediaType contentType = accept;

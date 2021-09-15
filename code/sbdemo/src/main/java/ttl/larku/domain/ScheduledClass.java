@@ -68,8 +68,8 @@ public class ScheduledClass {
     public void removeStudent(Student student) {
         students.remove(student);
 
-        //Do the other side of the relationship
-        student.dropClass(this);
+//        //Do the other side of the relationship
+//        student.dropClass(this);
     }
 
     public LocalDate getStartDate() {

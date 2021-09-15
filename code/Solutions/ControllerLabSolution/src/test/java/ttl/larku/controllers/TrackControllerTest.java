@@ -141,7 +141,7 @@ public class TrackControllerTest {
         System.out.println("orig String is " + origString);
 
         ObjectMapper mapper = new ObjectMapper();
-        mapper.findAndRegisterModules();
+//        mapper.findAndRegisterModules();
         Track track = mapper.readValue(origString, Track.class);
 
         String changedTitle = "Only Lightness";
