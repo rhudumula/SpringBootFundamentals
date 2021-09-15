@@ -43,6 +43,9 @@ public class TrackControllerTest {
 
         //Done - Add an expectation to check the size of the returned collection
         actions = actions.andExpect(jsonPath("$", hasSize(6)));
+
+        //Optional - Get the result and print it out.  Not necessary
+        //in an actual test.
         MvcResult result = actions.andReturn();
         System.out.println("result is " + result);
     }

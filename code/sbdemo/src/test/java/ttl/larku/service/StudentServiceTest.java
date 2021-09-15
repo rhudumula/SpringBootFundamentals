@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 //@ExtendWith(SpringExtension.class)
 //@ContextConfiguration(classes = LarkUConfig.class)
 @SpringBootTest
-@ActiveProfiles({"production"})
 public class StudentServiceTest {
 
     private String name1 = "Bloke";

@@ -15,8 +15,6 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
-        <jackson.version>2.10.3</jackson.version>
-        <jsonpath.version>2.2.0</jsonpath.version>
     </properties>
     <dependencies>
         <dependency>
