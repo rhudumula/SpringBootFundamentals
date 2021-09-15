@@ -70,8 +70,10 @@ public class RestClientSpringTest {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         HttpEntity<?> entity = new HttpEntity<>(headers);
 
+
         ResponseEntity<RestResultGeneric<Student>> response = rt.exchange("/adminrest/student/{id}",
                 HttpMethod.GET, entity, ptr, id);
+
         assertEquals(200, response.getStatusCodeValue());
 
         RestResultGeneric<Student> rr = response.getBody();
